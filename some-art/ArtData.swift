@@ -15,7 +15,7 @@ struct ArtData: Decodable {
 
 struct ArtObject: Decodable {
     let title: String
-    let webImage: WebImage?
+    let webImage: WebImage
 }
 
 struct WebImage: Decodable {

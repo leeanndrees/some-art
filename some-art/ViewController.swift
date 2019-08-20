@@ -12,25 +12,25 @@ class ViewController: UIViewController {
     
     @IBOutlet var artImageView: UIImageView!
     
-
+    private lazy var viewModel = ViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.delegate = self
+        viewModel.getArtObjectWithImage()
     }
 
     @IBAction func artButtonTapped(_ sender: Any) {
-        
-        ArtNetworking.getArtwork(success: { (artData) in
-            print(artData.count)
-            guard let imageURLString = artData.artObjects.randomElement()?.webImage?.url else { return }
-            guard let imageURL = URL(string: imageURLString) else { return }
-            self.artImageView.load(url: imageURL)
-        }) { (error) in
-            print("oh no")
-        }
-        
+        viewModel.getArtObjectWithImage()
     }
     
+}
+
+extension ViewController: ViewModelDelegate {
+    func updateImage() {
+        guard let url = viewModel.url else { return }
+        artImageView.load(url: url)
+    }
 }
 
 extension UIImageView {

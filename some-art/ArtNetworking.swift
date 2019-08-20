@@ -12,14 +12,14 @@ class ArtNetworking {
     
     static let artSession = URLSession(configuration: .default)
     static var dataTask: URLSessionDataTask?
-    static let artKey = <#String#>
+    static let artKey = "MAV5IXPH"
     
     static func getArtwork(success: @escaping (ArtData) -> Void, failure: @escaping (Error) -> Void) {
         
         dataTask?.cancel()
         
         guard var urlComponents = URLComponents(string: "https://www.rijksmuseum.nl/api/en/collection") else { return }
-        urlComponents.query = "key=MAV5IXPH&format=json&type=painting&q=cats"
+        urlComponents.query = "key=MAV5IXPH&format=json&type=painting&q=cats&imgonly=true"
             
         guard let url = urlComponents.url else { return }
         
