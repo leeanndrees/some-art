@@ -12,7 +12,7 @@ class ArtNetworking {
     
     static let artSession = URLSession(configuration: .default)
     static var dataTask: URLSessionDataTask?
-    static let artKey = "MAV5IXPH"
+    static let artKey = <#String#>
     
     static func getArtwork(success: @escaping (ArtData) -> Void, failure: @escaping (Error) -> Void) {
         
