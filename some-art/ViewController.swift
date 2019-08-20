@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var contentScrollView: UIScrollView!
     @IBOutlet var artImageView: UIImageView!
     
     private lazy var viewModel = ViewModel()
@@ -18,10 +19,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.getArtObjectWithImage()
+        contentScrollView.alwaysBounceVertical = true
+        configureRefreshControl()
     }
 
-    @IBAction func artButtonTapped(_ sender: Any) {
+    func configureRefreshControl() {
+        contentScrollView.refreshControl = UIRefreshControl()
+        contentScrollView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
         viewModel.getArtObjectWithImage()
+        
+        DispatchQueue.main.async {
+            self.contentScrollView.refreshControl?.endRefreshing()
+        }
     }
     
 }

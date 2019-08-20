@@ -18,29 +18,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLg-by-36l">
-                                <rect key="frame" x="168" y="120" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get Art"/>
-                                <connections>
-                                    <action selector="artButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tFV-bn-Wnc"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VI8-Fg-Gja">
-                                <rect key="frame" x="36" y="196" width="347" height="446"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cw9-IN-av2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dpa-Cl-mVp">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VI8-Fg-Gja">
+                                                <rect key="frame" x="34" y="172" width="347" height="406"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="VI8-Fg-Gja" firstAttribute="leading" secondItem="Dpa-Cl-mVp" secondAttribute="leading" constant="34" id="4Sm-l2-25m"/>
+                                            <constraint firstAttribute="bottom" secondItem="VI8-Fg-Gja" secondAttribute="bottom" constant="240" id="ILZ-22-ANh"/>
+                                            <constraint firstAttribute="trailing" secondItem="VI8-Fg-Gja" secondAttribute="trailing" constant="33" id="Imf-QT-6Ii"/>
+                                            <constraint firstItem="VI8-Fg-Gja" firstAttribute="top" secondItem="Dpa-Cl-mVp" secondAttribute="top" constant="172" id="zRU-al-CPj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Dpa-Cl-mVp" firstAttribute="width" secondItem="cw9-IN-av2" secondAttribute="width" id="4UP-dv-YaN"/>
+                                    <constraint firstItem="Dpa-Cl-mVp" firstAttribute="leading" secondItem="cw9-IN-av2" secondAttribute="leading" id="Zcp-0g-Jjc"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dpa-Cl-mVp" secondAttribute="bottom" id="ePa-vi-gEv"/>
+                                    <constraint firstItem="Dpa-Cl-mVp" firstAttribute="top" secondItem="cw9-IN-av2" secondAttribute="top" id="exH-YS-Ysx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dpa-Cl-mVp" secondAttribute="trailing" id="mpb-fp-seX"/>
+                                    <constraint firstItem="Dpa-Cl-mVp" firstAttribute="height" secondItem="cw9-IN-av2" secondAttribute="height" id="wJ4-L1-aFz"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cw9-IN-av2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Sw-87-OCD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cw9-IN-av2" secondAttribute="bottom" id="GBG-cq-BC6"/>
+                            <constraint firstItem="cw9-IN-av2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="L0q-hM-CVD"/>
+                            <constraint firstItem="cw9-IN-av2" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="i2m-QZ-TSK"/>
+                            <constraint firstItem="cw9-IN-av2" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="onI-Fq-QtY"/>
+                            <constraint firstItem="cw9-IN-av2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xb0-Ti-AEb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="artImageView" destination="VI8-Fg-Gja" id="D1G-fV-RiI"/>
+                        <outlet property="contentScrollView" destination="cw9-IN-av2" id="QDX-An-eEJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="156.52173913043478" y="20.758928571428569"/>
+            <point key="canvasLocation" x="155.07246376811597" y="20.758928571428569"/>
         </scene>
     </scenes>
 </document>
