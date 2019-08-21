@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ArtNetworking {
+final class ArtNetworking {
     
     static let artSession = URLSession(configuration: .default)
     static var dataTask: URLSessionDataTask?
