@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     @IBOutlet var contentScrollView: UIScrollView!
     @IBOutlet var artImageView: UIImageView!
@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel.delegate = self
         viewModel.getArtObjectWithImage()
         contentScrollView.alwaysBounceVertical = true

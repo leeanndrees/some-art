@@ -13,8 +13,7 @@ protocol ViewModelDelegate: AnyObject {
 }
 
 extension ViewController {
-    class ViewModel {
-        
+    final class ViewModel {
         weak var delegate: ViewModelDelegate?
         public var url: URL? {
             didSet {
@@ -22,27 +21,25 @@ extension ViewController {
             }
         }
         
+        var randomType: String {
+            guard let randomCase = ArtType.allCases.randomElement()?.rawValue else { return ArtType.painting.rawValue }
+            return randomCase
+        }
+        
+        var randomTerm: String {
+            guard let randomCase = SearchTerm.allCases.randomElement()?.rawValue else { return SearchTerm.cats.rawValue }
+            return randomCase
+        }
+        
         func getArtObjectWithImage() {
-            let type = getRandomType()
-            let term = getRandomTerm()
+            ArtNetworking.getArtwork(of: randomType, with: randomTerm, success: { (artData) in
+                guard let randomObject = artData.artObjects.randomElement(),
+                    let imageURL = URL(string:randomObject.webImage.url) else { return }
             
-            ArtNetworking.getArtwork(of: type, with: term, success: { (artData) in
-                guard let randomObject = artData.artObjects.randomElement() else { return }
-                guard let imageURL = URL(string:randomObject.webImage.url) else { return }
                 self.url = imageURL
             }) { (error) in
                 print("oh no")
             }
         }
-    }
-    
-    static func getRandomType() -> String {
-        guard let randomCase = ArtType.allCases.randomElement()?.rawValue else { return ArtType.painting.rawValue }
-        return randomCase
-    }
-    
-    static func getRandomTerm() -> String {
-        guard let randomCase = SearchTerm.allCases.randomElement()?.rawValue else { return SearchTerm.cats.rawValue }
-        return randomCase
     }
 }
